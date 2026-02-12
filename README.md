@@ -1,3 +1,7 @@
+<!--
+Implemented an end-to-end heart disease prediction system using Logistic Regression with automated data loading, EDA, and hyperparameter optimization. Achieved 85% accuracy on test data with strong F1-scores (~0.87), confirming chest pain type and maximum heart rate as dominant clinical indicators.
+-->
+
 ##  Heart Disease Classification using Logistic Regression
 
 This project implements a **Logistic Regression** model to predict the presence of heart disease using clinical features from the [Heart Disease UCI dataset](https://www.kaggle.com/datasets/johnsmith88/heart-disease-dataset). The pipeline includes automatic data loading, exploratory data analysis (EDA), model training, hyperparameter tuning, and performance evaluation—all in a single, reproducible script.
