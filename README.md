@@ -331,7 +331,3 @@ Educational and research purposes only.
 
 ⚠️ **Research purposes only.** Not for clinical diagnosis without professional validation and regulatory approval.
 
----
-
-**Last Updated**: 2026-05-03 17:38:48  
-**Status**: ✅ Leakage-Free | Clinically Validated | Fairness-Tested
