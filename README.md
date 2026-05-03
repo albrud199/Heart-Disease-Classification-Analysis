@@ -179,6 +179,3 @@ Execute notebooks in order:
 This project is provided for educational and research purposes.
 
 ---
-
-**Repository**: [albrud199/Heart-Disease-Classification-Analysis](https://github.com/albrud199/Heart-Disease-Classification-Analysis)  
-**Last Updated**: 2026-05-03
