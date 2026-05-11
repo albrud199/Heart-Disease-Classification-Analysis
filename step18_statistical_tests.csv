@@ -1,0 +1,8 @@
+comparison,wilcoxon_stat,wilcoxon_p_raw,wilcoxon_p_bonf,cohens_d,effect_size,sig_bonf,nemenyi_sig,ens_avg_rank,mod_avg_rank
+Ensemble vs Logistic Regression,5.0,0.625,1.0,-0.16249602499796542,Negligible,False,False,3.1,3.9
+Ensemble vs SVM,6.0,0.8125,1.0,0.26261648148882666,Small,False,False,3.1,4.1
+Ensemble vs Random Forest,3.0,0.625,1.0,0.07134671526837921,Negligible,False,False,3.1,3.8
+Ensemble vs Gradient Boosting,3.0,0.3125,1.0,0.8172086215987076,Large,False,False,3.1,5.2
+Ensemble vs XGBoost,0.0,0.0625,0.4375,1.0926538449536471,Large,False,False,3.1,6.8
+Ensemble vs KNN,7.0,1.0,1.0,-0.02926313227747131,Negligible,False,False,3.1,3.4
+Ensemble vs MLP,3.0,0.3125,1.0,0.7280708800270518,Medium,False,False,3.1,5.7

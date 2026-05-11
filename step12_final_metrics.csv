@@ -1,0 +1,9 @@
+metric,value,ci,meaning
+Accuracy,0.819672131147541,,Overall correct rate
+Precision,0.7931034482758621,,"Of predicted disease, truly disease"
+Recall (Sen),0.8214285714285714,"(np.float64(0.6666666666666666), np.float64(0.9583333333333334))","Of true disease, correctly detected"
+Specificity,0.8181818181818182,,"Of true no-disease, correctly ruled out"
+F1-Score,0.8070175438596491,"(np.float64(0.6808510638297872), np.float64(0.9063210227272727))",Harmonic mean of Prec & Recall
+ROC-AUC,0.8798701298701299,"(np.float64(0.7792182817182818), np.float64(0.9577990155006284))",Overall discriminative ability
+PR-AUC,0.8741105307097333,,Precision-Recall tradeoff area
+Brier Score,0.14129177359779097,,Probability calibration (lower=better)

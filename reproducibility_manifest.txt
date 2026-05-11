@@ -1,0 +1,29 @@
+Heart Disease Prediction — Reproducibility Manifest
+Generated: 2026-05-11 11:02:48
+Random seed: 42
+
+Dataset: UCI Cleveland (johnsmith88 Kaggle version)
+  Original rows: 1025
+  After dedup  : 302 unique records
+  Target fix   : 0=No Disease, 1=Disease (encoding corrected)
+
+Final Results:
+  Test AUC    : 0.8799
+  Test F1     : 0.8070
+  Test Recall : 0.8214
+  Test Spec   : 0.8182
+  Brier Score : 0.1413
+
+Requirements:
+  numpy==2.4.4
+  pandas==3.0.2
+  scikit-learn==1.8.0
+  imbalanced-learn==0.14.1
+  xgboost==3.2.0
+  shap==0.51.0
+  scipy==1.17.1
+  matplotlib==3.10.9
+  seaborn==0.13.2
+
+All steps: Steps 1-23 documented in Python files
+Figures: fig01-fig41 (41 total publication figures)

@@ -8,10 +8,10 @@ Original file is located at
 """
 
 
-
 """# **Steps 1 → 5**"""
 
-!pip install kagglehub pandas numpy matplotlib seaborn scipy scikit-learn imbalanced-learn -q
+# Install dependencies from the terminal before running this script:
+#   python -m pip install -r requirements.txt
 
 # =============================================================================
 #  END-TO-END ML PIPELINE — ENHANCED CONFERENCE RESEARCH FRAMEWORK
@@ -31,8 +31,26 @@ import os
 import json
 import hashlib
 import warnings
+import sys
+
+# VS Code/Windows friendly execution: avoid Unicode and joblib worker-pool issues.
+os.environ.setdefault("LOKY_MAX_CPU_COUNT", "1")
+os.environ.setdefault("OMP_NUM_THREADS", "1")
+os.environ.setdefault("MKL_NUM_THREADS", "1")
+os.environ.setdefault("OPENBLAS_NUM_THREADS", "1")
+
+try:
+    if hasattr(sys.stdout, "reconfigure"):
+        sys.stdout.reconfigure(encoding="utf-8", errors="replace")
+    if hasattr(sys.stderr, "reconfigure"):
+        sys.stderr.reconfigure(encoding="utf-8", errors="replace")
+except Exception:
+    pass
+
 import numpy as np
 import pandas as pd
+import matplotlib
+matplotlib.use('module://matplotlib_inline.backend_inline')  # Display inline in terminal
 import matplotlib.pyplot as plt
 import matplotlib.gridspec as gridspec
 import seaborn as sns
@@ -96,24 +114,31 @@ for lib, ver in VERSION_LOG.items():
 
 # ── 1.3  Load dataset ────────────────────────────────────────────────────────
 print("\n[1.3] Loading dataset...")
-try:
-    df_raw = kagglehub.load_dataset(
-        KaggleDatasetAdapter.PANDAS,
-        "johnsmith88/heart-disease-dataset",
-        "heart.csv",
-    )
-    print(f"      Loaded via kagglehub  shape: {df_raw.shape}")
-except Exception:
-    import os
-    _loaded = False
-    for _fname in ["heart.csv", "/content/heart.csv"]:
-        if os.path.exists(_fname):
-            df_raw = pd.read_csv(_fname)
-            print(f"      Loaded from local file: {_fname}  shape: {df_raw.shape}")
-            _loaded = True
-            break
-    if not _loaded:
-        raise FileNotFoundError("Upload heart.csv to Colab or connect Kaggle API.")
+from pathlib import Path
+_loaded = False
+_local_candidates = [Path("heart.csv"), Path(__file__).resolve().parent / "heart.csv", Path.cwd() / "heart.csv"]
+for _path in dict.fromkeys(_local_candidates):
+    if _path.exists():
+        df_raw = pd.read_csv(_path)
+        print(f"      Loaded from local file: {_path.resolve()}  shape: {df_raw.shape}")
+        _loaded = True
+        break
+
+if not _loaded:
+    try:
+        df_raw = kagglehub.load_dataset(
+            KaggleDatasetAdapter.PANDAS,
+            "johnsmith88/heart-disease-dataset",
+            "heart.csv",
+        )
+        print(f"      Loaded via kagglehub  shape: {df_raw.shape}")
+        _loaded = True
+    except Exception as e:
+        raise FileNotFoundError(
+            "Could not load heart.csv. Put heart.csv in the same folder as this script "
+            "or configure KaggleHub. "
+            f"Original KaggleHub error: {e!r}"
+        )
 print(f"      Columns: {list(df_raw.columns)}")
 
 # ── CRITICAL: Fix inverted target encoding ───────────────────────────
@@ -845,7 +870,7 @@ required = ['X_train', 'X_test', 'y_train', 'y_test',
             'X_train_prep', 'X_test_prep', 'preprocessor',
             'FEATURE_NAMES_PREP', 'RANDOM_SEED', 'make_imb_pipeline',
             'CONTINUOUS_FEATURES', 'CATEGORICAL_FEATURES']
-missing = [v for v in required if v not in dir()]
+missing = [v for v in required if v not in globals()]
 if missing:
     raise RuntimeError(
         f"Missing objects from Steps 1–5: {missing}\n"
@@ -1220,7 +1245,7 @@ for i, f in enumerate(rfe_lr_features, 1):
 # RFE with Random Forest
 rfe_rf = RFE(
     estimator=RandomForestClassifier(
-        n_estimators=100, random_state=RANDOM_SEED, n_jobs=-1
+        n_estimators=100, random_state=RANDOM_SEED, n_jobs=1
     ),
     n_features_to_select=TOP_K_RFE,
     step=1,
@@ -1867,7 +1892,7 @@ MODEL_COLORS = [
 required = ['X_train_sel','X_test_sel','y_train','y_test',
             'RANDOM_SEED','make_imb_pipeline','BASELINE_CV_RESULTS',
             'LR_TEST_RESULT','SELECTED_FEATURES']
-missing = [v for v in required if v not in dir()]
+missing = [v for v in required if v not in globals()]
 if missing:
     raise RuntimeError(
         f"Missing objects from Steps 1–8: {missing}\n"
@@ -2010,7 +2035,7 @@ MODELS = {
     ),
     'Random Forest': RandomForestClassifier(
         n_estimators=200, max_depth=None,
-        class_weight='balanced', random_state=RANDOM_SEED, n_jobs=-1
+        class_weight='balanced', random_state=RANDOM_SEED, n_jobs=1
     ),
     'Gradient Boosting': GradientBoostingClassifier(
         n_estimators=200, learning_rate=0.1, max_depth=3,
@@ -2326,7 +2351,7 @@ for ax_i, name in enumerate(top3):
         cv=StratifiedKFold(n_splits=5, shuffle=True, random_state=RANDOM_SEED),
         scoring='roc_auc',
         train_sizes=np.linspace(0.1, 1.0, 8),
-        n_jobs=-1
+        n_jobs=1
     )
     tr_m, tr_s = train_scores.mean(1), train_scores.std(1)
     vl_m, vl_s = val_scores.mean(1),   val_scores.std(1)
@@ -2464,7 +2489,7 @@ BASE_ESTIMATORS = {
     'SVM': SVC(
         probability=True, class_weight='balanced', random_state=RANDOM_SEED),
     'Random Forest': RandomForestClassifier(
-        class_weight='balanced', random_state=RANDOM_SEED, n_jobs=-1),
+        class_weight='balanced', random_state=RANDOM_SEED, n_jobs=1),
     'Gradient Boosting': GradientBoostingClassifier(
         random_state=RANDOM_SEED),
     'XGBoost': XGBClassifier(
@@ -2518,7 +2543,7 @@ for model_name, base_clf in BASE_ESTIMATORS.items():
             pipe, grid,
             cv=CV_INNER,
             scoring='roc_auc',
-            n_jobs=-1,
+            n_jobs=1,
             refit=True,
             error_score='raise',
         )
@@ -3047,7 +3072,7 @@ required = ['X_train_sel', 'X_test_sel', 'y_train', 'y_test',
             'TUNED_TEST_RESULTS', 'NESTED_CV_RESULTS',
             'NESTED_AUC_MATRIX', 'BEST_PARAMS', 'LR_TEST_RESULT',
             'SELECTED_FEATURES']
-missing = [v for v in required if v not in dir()]
+missing = [v for v in required if v not in globals()]
 if missing:
     raise RuntimeError(
         f"Missing objects from Steps 1–10: {missing}\n"
@@ -3156,11 +3181,11 @@ svm_clf = SVC(probability=True, class_weight='balanced',
               class_weight='balanced', random_state=RANDOM_SEED)
 rf_clf  = RandomForestClassifier(class_weight='balanced',
                                   random_state=RANDOM_SEED,
-                                  n_jobs=-1, **rf_params) if rf_params else \
+                                  n_jobs=1, **rf_params) if rf_params else \
           RandomForestClassifier(n_estimators=300, max_depth=5,
                                   min_samples_split=5,
                                   class_weight='balanced',
-                                  random_state=RANDOM_SEED, n_jobs=-1)
+                                  random_state=RANDOM_SEED, n_jobs=1)
 
 print("\n  Base estimators rebuilt successfully ✓")
 
@@ -4092,7 +4117,7 @@ required = [
     'ALL_CV_RESULTS','NESTED_CV_RESULTS',
     'TUNED_TEST_RESULTS','LR_TEST_RESULT',
 ]
-missing = [v for v in required if v not in dir()]
+missing = [v for v in required if v not in globals()]
 if missing:
     raise RuntimeError(
         f"Missing objects from Steps 1–12: {missing}\n"
@@ -4339,7 +4364,7 @@ for name in top4_names:
             'Random Forest': RandomForestClassifier(
                 n_estimators=300, max_depth=5, min_samples_split=5,
                 class_weight='balanced', random_state=RANDOM_SEED,
-                n_jobs=-1),
+                n_jobs=1),
             'Gradient Boosting': GradientBoostingClassifier(
                 n_estimators=100, learning_rate=0.2, max_depth=3,
                 random_state=RANDOM_SEED),
@@ -4362,7 +4387,7 @@ for name in top4_names:
         cv=lc_cv,
         scoring='roc_auc',
         train_sizes=train_sizes_pct,
-        n_jobs=-1,
+        n_jobs=1,
         shuffle=True,
         random_state=RANDOM_SEED,
     )
@@ -4432,7 +4457,7 @@ clf_map_full = {
                random_state=RANDOM_SEED),
     'Random Forest': RandomForestClassifier(
         n_estimators=300, max_depth=5, min_samples_split=5,
-        class_weight='balanced', random_state=RANDOM_SEED, n_jobs=-1),
+        class_weight='balanced', random_state=RANDOM_SEED, n_jobs=1),
     'Gradient Boosting': GradientBoostingClassifier(
         n_estimators=100, learning_rate=0.2, max_depth=3,
         random_state=RANDOM_SEED),
@@ -5011,7 +5036,7 @@ required = [
     'RANDOM_SEED','SMOTE_CONFIG','HYBRID_ENSEMBLE',
     'ENS_Y_PROB','ENS_TEST_RESULT','TUNED_TEST_RESULTS','LR_TEST_RESULT',
 ]
-missing = [v for v in required if v not in dir()]
+missing = [v for v in required if v not in globals()]
 if missing:
     raise RuntimeError(
         f"Missing objects from Steps 1–13: {missing}\n"
@@ -5035,7 +5060,7 @@ MODEL_CLF_MAP = {
         class_weight='balanced', random_state=RANDOM_SEED),
     'Random Forest': RandomForestClassifier(
         n_estimators=300, max_depth=5, min_samples_split=5,
-        class_weight='balanced', random_state=RANDOM_SEED, n_jobs=-1),
+        class_weight='balanced', random_state=RANDOM_SEED, n_jobs=1),
     'Gradient Boosting': GradientBoostingClassifier(
         n_estimators=100, learning_rate=0.2, max_depth=3,
         random_state=RANDOM_SEED),
@@ -5882,7 +5907,7 @@ required = ['X_train_sel','X_test_sel','y_train','y_test',
             'RANDOM_SEED','SMOTE_CONFIG','HYBRID_ENSEMBLE',
             'ENS_Y_PROB','ENS_TEST_RESULT','SELECTED_FEATURES',
             'TUNED_TEST_RESULTS']
-missing = [v for v in required if v not in dir()]
+missing = [v for v in required if v not in globals()]
 if missing:
     raise RuntimeError(
         f"Missing objects from Steps 1–15: {missing}\n"
@@ -5908,7 +5933,7 @@ svm_base = SVC(C=10.0, gamma=0.01, kernel='rbf', probability=True,
 rf_base  = RandomForestClassifier(n_estimators=300, max_depth=5,
                                    min_samples_split=5,
                                    class_weight='balanced',
-                                   random_state=RANDOM_SEED, n_jobs=-1)
+                                   random_state=RANDOM_SEED, n_jobs=1)
 
 knn_fit = clone(knn_base); knn_fit.fit(X_tr_s, y_tr_s)
 svm_fit = clone(svm_base); svm_fit.fit(X_tr_s, y_tr_s)
@@ -6478,7 +6503,7 @@ t0 = time.time()
 perm_rf = permutation_importance(
     rf_fit, X_test_sel, np.array(y_test),
     n_repeats=30, random_state=RANDOM_SEED,
-    scoring='roc_auc', n_jobs=-1
+    scoring='roc_auc', n_jobs=1
 )
 print(f"  RF permutation done  ({time.time()-t0:.1f}s)")
 
@@ -6489,7 +6514,7 @@ t0 = time.time()
 perm_knn = permutation_importance(
     knn_fit, X_test_sel, np.array(y_test),
     n_repeats=30, random_state=RANDOM_SEED,
-    scoring='roc_auc', n_jobs=-1
+    scoring='roc_auc', n_jobs=1
 )
 print(f"  KNN permutation done ({time.time()-t0:.1f}s)")
 
@@ -6500,7 +6525,7 @@ t0 = time.time()
 perm_svm = permutation_importance(
     svm_fit, X_test_sel, np.array(y_test),
     n_repeats=30, random_state=RANDOM_SEED,
-    scoring='roc_auc', n_jobs=-1
+    scoring='roc_auc', n_jobs=1
 )
 print(f"  SVM permutation done ({time.time()-t0:.1f}s)")
 
@@ -6884,7 +6909,7 @@ required = ['X_train_sel','X_test_sel','y_train','y_test',
             'ENS_Y_PROB','ENS_CV_DF','ENS_TEST_RESULT',
             'NESTED_CV_RESULTS','NESTED_AUC_MATRIX',
             'TUNED_TEST_RESULTS','LR_TEST_RESULT']
-missing = [v for v in required if v not in dir()]
+missing = [v for v in required if v not in globals()]
 if missing:
     raise RuntimeError(f"Missing objects: {missing}\nRun Steps 1–17 first.")
 
@@ -7965,7 +7990,7 @@ required = ['X_train_sel','X_test_sel','y_train','y_test',
             'ENS_Y_PROB','ENS_Y_PRED','ENS_TEST_RESULT',
             'ENS_CV_DF','SELECTED_FEATURES',
             'TUNED_TEST_RESULTS','LR_TEST_RESULT']
-missing = [v for v in required if v not in dir()]
+missing = [v for v in required if v not in globals()]
 if missing:
     raise RuntimeError(f"Missing objects: {missing}\nRun Steps 1–20 first.")
 
@@ -8262,7 +8287,7 @@ axes[4].set_title('Ranked Probability Plot\n(G=TP, B=TN, O=FP, R=FN)',
 axes[4].legend(fontsize=7)
 
 # Panel F: SHAP profile of FN (if available)
-if 'shap_ens_test' in dir() and n_FN > 0:
+if 'shap_ens_test' in globals() and n_FN > 0:
     fn_shap_mean = np.abs(shap_ens_test[FN_mask]).mean(axis=0)
     tp_shap_mean = np.abs(shap_ens_test[TP_mask]).mean(axis=0)
     top5_idx = np.argsort(fn_shap_mean)[::-1][:8]
@@ -8345,7 +8370,7 @@ aha_interpretations = {
 print(f"  {'SHAP Feature':<20}  {'Clinical Variable':<26}  {'Direction':<28}  {'ACC/AHA Alignment'}")
 print("  " + "─" * 110)
 for feat, (clin, direction, alignment) in aha_interpretations.items():
-    if 'shap_importance' in dir():
+    if 'shap_importance' in globals():
         try:
             feat_clean = clean_name(feat)
             shap_row   = shap_importance[shap_importance['feature']==feat_clean]
@@ -8479,7 +8504,7 @@ for (x1,y1),(x2,y2) in [((5,8.5),(5,7.0)),((5,7.0),(5,6.0)),
                      arrowprops=dict(arrowstyle='->', color='#555555', lw=1.5))
 
 # Right: AUC alignment chart
-if 'shap_importance' in dir():
+if 'shap_importance' in globals():
     top10 = shap_importance.head(10)
     feat_list = top10['feature'].tolist()
     shap_vals = top10['mean_abs_shap'].tolist()
@@ -8624,7 +8649,7 @@ print(f"    ECE (before)               : see step14_calibration_results.csv")
 print(f"\n  EXPLAINABILITY:")
 print(f"    SHAP top-5 features: ca_0, thal_2, cp_0, thal_3, oldpeak")
 print(f"    ACC/AHA alignment  : 5/5 top features validated")
-if 'rho_ens' in dir():
+if 'rho_ens' in globals():
     print(f"    SHAP vs Perm ρ     : {rho_ens:.4f} (Strong agreement)")
 
 # Clinical
@@ -8633,7 +8658,7 @@ print(f"    Beats Treat-All    : 91.1% of clinical thresholds")
 print(f"    Interventions avoided/1000 (τ=0.20): 259")
 
 # Fairness
-if 'delta_tpr' in dir():
+if 'delta_tpr' in globals():
     print(f"\n  FAIRNESS:")
     print(f"    |ΔTPR| sex (Eq. Odds): {delta_tpr:.4f}  {'✓ OK' if delta_tpr<0.10 else '⚠'}")
     print(f"    Demographic parity   : {delta_dp:.4f}   {'✓ OK' if delta_dp<0.10 else '⚠ prevalence-driven'}")
@@ -8649,10 +8674,10 @@ claims = [
     ("AUC=0.8799 on hold-out",          True,  "Step 12 final evaluation"),
     ("95% CI reported",                 True,  "Bootstrap B=1000, Step 12"),
     ("SHAP alignment 5/5",              True,  "Steps 16-17"),
-    ("Spearman ρ>0.70 SHAP vs Perm",   True,  f"ρ={rho_ens:.4f}" if 'rho_ens' in dir() else "Step 17"),
+    ("Spearman ρ>0.70 SHAP vs Perm",   True,  f"ρ={rho_ens:.4f}" if 'rho_ens' in globals() else "Step 17"),
     ("DCA beats Treat-All >50%",        True,  "91.1% of thresholds, Step 15"),
     ("Ablation study 7 configs",        True,  "Step 19, all components tested"),
-    ("Fairness |ΔTPR|<0.10",           True,  f"|ΔTPR|={delta_tpr:.4f}" if 'delta_tpr' in dir() else "Step 20"),
+    ("Fairness |ΔTPR|<0.10",           True,  f"|ΔTPR|={delta_tpr:.4f}" if 'delta_tpr' in globals() else "Step 20"),
     ("Friedman test reported",          True,  f"χ²=9.57, p=0.214, Step 18"),
     ("Cohen's d effect sizes",          True,  "All Wilcoxon comparisons, Step 18"),
     ("Brier Score reported",            True,  f"Brier={brier_score_loss(y_test, ENS_Y_PROB):.4f}"),
@@ -8815,8 +8840,6 @@ print(f"""
 print("=" * 70)
 print("  FRAMEWORK COMPLETE — STEPS 1 THROUGH 23")
 print("=" * 70)
-
-
 
 
 

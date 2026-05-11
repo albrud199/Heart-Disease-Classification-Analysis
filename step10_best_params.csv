@@ -1,0 +1,8 @@
+model,C,penalty,solver,gamma,kernel,n_estimators,max_depth,min_samples_split,learning_rate,n_neighbors,weights,metric,hidden_layer_sizes,alpha,learning_rate_init
+Logistic Regression,1.0,l2,lbfgs,,,,,,,,,,,,
+SVM,10.0,,,0.01,rbf,,,,,,,,,,
+Random Forest,,,,,,300.0,5.0,5.0,,,,,,,
+Gradient Boosting,,,,,,100.0,3.0,,0.2,,,,,,
+XGBoost,,,,,,100.0,7.0,,0.1,,,,,,
+KNN,,,,,,,,,,15.0,uniform,manhattan,,,
+MLP,,,,,,,,,,,,,"(128, 64, 32)",0.0001,0.01

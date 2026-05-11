@@ -1,0 +1,5 @@
+metric,value,threshold,acceptable
+delta_tpr_sex,0.04761904761904756,0.1,True
+delta_dp_sex,0.1060054396364618,0.1,False
+age_sens_range,0.2222222222222222,0.2,False
+age_auc_range,0.2142857142857143,0.15,False

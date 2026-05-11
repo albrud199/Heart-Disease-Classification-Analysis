@@ -1,0 +1,11 @@
+feature,clinical_variable,shap_direction,aha_alignment
+ca_0,0 fluoroscopy vessels,+SHAP → disease when vessels>0,✓ Aligns: Ca=0 means NO blockage → lower risk (negative SHAP expected for disease; OHE note: ca_0=1 means 0 vessels blocked)
+thal_2,Reversible thalium defect,↑SHAP → disease,✓ Aligns: Reversible defect = active ischemia = disease
+cp_0,Asymptomatic chest pain,+SHAP → disease,✓ Aligns: Asymptomatic CP (cp=0) in Cleveland = typical angina in original coding
+thal_3,Fixed thalium defect,+SHAP → disease,✓ Aligns: Fixed defect = prior infarction = disease
+oldpeak,ST depression,+SHAP → disease,✓ Aligns: Higher ST depression = more severe ischemia = disease
+age×oldpeak,Age×ST interaction,+SHAP → disease,✓ Aligns: Older patients + ST depression = compounded ischemic risk
+exang_0,No exercise angina,−SHAP → no disease,✓ Aligns: Absence of exercise-induced angina = lower disease risk
+exang_1,Exercise-induced angina,+SHAP → disease,✓ Aligns: Presence of exercise angina = ischemic stress = disease
+thalach,Max heart rate,−SHAP → disease (lower HR),✓ Aligns: Lower max HR = reduced cardiac reserve = disease
+ca_1,1 fluoroscopy vessel,+SHAP → disease,✓ Aligns: 1 blocked vessel = coronary artery disease
