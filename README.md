@@ -15,6 +15,30 @@ Check out the configuration reference at https://huggingface.co/docs/hub/spaces-
 
 # Heart Disease Prediction — Gradio Demo
 
+## Live Demo
+
+Space URL: https://huggingface.co/spaces/albinrudro/heart-disease-prediction
+
+Direct app URL usually follows this pattern:
+https://albinrudro-heart-disease-prediction.hf.space
+
+## Input Features
+
+The app now shows each parameter by name instead of one comma-separated line:
+- age
+- sex
+- cp
+- trestbps
+- chol
+- fbs
+- restecg
+- thalach
+- exang
+- oldpeak
+- slope
+- ca
+- thal
+
 This repository contains a minimal Gradio app to serve a trained heart disease prediction model.
 
 Quick start
