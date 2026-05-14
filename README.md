@@ -1,3 +1,42 @@
+# Heart Disease Prediction — Gradio Demo
+
+This repository contains a minimal Gradio app to serve a trained heart disease prediction model.
+
+Quick start
+
+1. Save your trained scikit-learn model as `models/model.pkl`:
+
+```python
+import joblib
+joblib.dump(model, "models/model.pkl")
+```
+
+2. Install dependencies:
+
+```bash
+pip install -r requirements.txt
+```
+
+3. Run the demo locally:
+
+```bash
+python app.py
+```
+
+4. Deploy: push this repo to GitHub and connect it to a Hugging Face Space (Gradio). The Space will run `app.py` and provide a free live URL for public projects. See `docs/DEPLOY.md` for details.
+
+Resume-ready bullet
+
+- Built and deployed a heart disease prediction app using Gradio and Hugging Face Spaces; model artifact served via `models/model.pkl` or the Hugging Face Hub.
+
+Additional files added
+
+- `scripts/prepare_model.py` — trains a RandomForest on `heart.csv`, saves `models/model.pkl`, logs to MLflow and optionally W&B.
+- `scripts/push_hf_model.py` — helper to upload `models/model.pkl` to the Hugging Face Hub (requires `HUGGINGFACE_HUB_TOKEN` and `HF_MODEL_REPO`).
+- `Dockerfile` — runs `app.py` in a lightweight image.
+- `tests/test_app.py` — pytest that prepares the model and runs a sample prediction.
+- `.github/workflows/ci.yml` — runs `pytest` on push/PR.
+
 # Leakage-Aware Hybrid Ensemble Learning for Heart Disease Prediction
 
 ## 📋 Abstract
