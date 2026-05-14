@@ -1,5 +1,8 @@
 name: Upload Model to HF Hub
 
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
 on:
   push:
     paths:
