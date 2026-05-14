@@ -1,3 +1,18 @@
+---
+title: Heart Disease Prediction
+emoji: 🫀
+colorFrom: pink
+colorTo: indigo
+sdk: gradio
+sdk_version: "6.14.0"
+python_version: "3.13"
+app_file: app.py
+pinned: false
+license: openrail
+---
+
+Check out the configuration reference at https://huggingface.co/docs/hub/spaces-config-reference
+
 # Heart Disease Prediction — Gradio Demo
 
 This repository contains a minimal Gradio app to serve a trained heart disease prediction model.
