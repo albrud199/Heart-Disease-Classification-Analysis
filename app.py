@@ -1,12 +1,24 @@
 import os
 import joblib
 import numpy as np
+import pandas as pd
 import gradio as gr
+from sklearn.ensemble import RandomForestClassifier
 
 def load_model():
     local_path = os.path.join("models", "model.pkl")
     if os.path.exists(local_path):
         return joblib.load(local_path)
+
+    heart_csv = "heart.csv"
+    if os.path.exists(heart_csv):
+        data = pd.read_csv(heart_csv)
+        if "target" in data.columns:
+            features = data.drop(columns=["target"])
+            target = data["target"]
+            model = RandomForestClassifier(n_estimators=100, random_state=42)
+            model.fit(features, target)
+            return model
 
     repo = os.environ.get("HF_MODEL_REPO")
     if repo:
