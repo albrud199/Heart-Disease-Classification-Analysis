@@ -1,0 +1,36 @@
+{
+  "locked_threshold": 0.51,
+  "selection_rule": "Maximize Youden's J (sensitivity + specificity - 1); ties within 1e-3 resolved toward higher sensitivity.",
+  "operational_rationale": "Heart-disease screening context: a missed case (false negative) is costlier than an unnecessary follow-up test (false positive). Youden's J balances sensitivity and specificity without assuming 0.50 is optimal; near-ties favor higher sensitivity.",
+  "evidence_source": "calibrated validation probabilities only (splits/val.csv); test set NOT accessed",
+  "validation_operating_point": {
+    "threshold": 0.51,
+    "tp": 102.0,
+    "fp": 0.0,
+    "tn": 100.0,
+    "fn": 3.0,
+    "recall_sensitivity": 0.9714285714285714,
+    "specificity": 1.0,
+    "precision": 1.0,
+    "f1": 0.9855072463768116,
+    "balanced_accuracy": 0.9857142857142858,
+    "youden_j": 0.9714285714285715,
+    "accuracy": 0.9853658536585366,
+    "predicted_positive_rate": 0.4975609756097561
+  },
+  "default_threshold_050_comparison": {
+    "threshold": 0.5,
+    "tp": 105.0,
+    "fp": 3.0,
+    "tn": 97.0,
+    "fn": 0.0,
+    "recall_sensitivity": 1.0,
+    "specificity": 0.97,
+    "precision": 0.9722222222222222,
+    "f1": 0.9859154929577465,
+    "balanced_accuracy": 0.985,
+    "youden_j": 0.97,
+    "accuracy": 0.9853658536585366,
+    "predicted_positive_rate": 0.526829268292683
+  }
+}

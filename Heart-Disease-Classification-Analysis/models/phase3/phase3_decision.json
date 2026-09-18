@@ -1,0 +1,19 @@
+{
+  "primary_metric": "ROC-AUC",
+  "secondary_metrics": [
+    "PR-AUC",
+    "F1",
+    "recall",
+    "specificity",
+    "precision",
+    "Brier score"
+  ],
+  "test_set_used": false,
+  "shortlisted_models": [
+    "Random Forest",
+    "KNN",
+    "SVM"
+  ],
+  "selection_rule": "top three by stability score = mean ROC-AUC minus across-seed standard deviation",
+  "phase4_note": "Use these CV-selected candidates for ensemble research; do not use final test results for selection."
+}

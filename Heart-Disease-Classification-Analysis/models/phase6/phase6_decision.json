@@ -1,0 +1,43 @@
+{
+  "phase": 6,
+  "steps": [
+    22,
+    23
+  ],
+  "locked_threshold": 0.51,
+  "explanation_method": "deterministic_model_agnostic_shapley_permutation_fallback",
+  "base_test_metrics": {
+    "n": 205,
+    "positive_rate": 0.5121951219512195,
+    "roc_auc": 1.0,
+    "pr_auc": 1.0,
+    "recall_sensitivity": 1.0,
+    "specificity": 1.0,
+    "precision": 1.0,
+    "f1": 1.0,
+    "balanced_accuracy": 1.0,
+    "roc_auc_ci95_low": 1.0,
+    "roc_auc_ci95_high": 1.0,
+    "recall_sensitivity_ci95_low": 1.0,
+    "recall_sensitivity_ci95_high": 1.0,
+    "specificity_ci95_low": 1.0,
+    "specificity_ci95_high": 1.0,
+    "f1_ci95_low": 1.0,
+    "f1_ci95_high": 1.0
+  },
+  "error_counts": [
+    {
+      "error_type": "correct",
+      "count": 205,
+      "mean_confidence": 0.9902439024390244,
+      "mean_probability": 0.5219512195121951
+    }
+  ],
+  "subgroups_evaluated": 11,
+  "minimum_subgroup_n": 10,
+  "limitations": [
+    "Subgroups are exploratory and not fairness or clinical validation.",
+    "Small sample sizes produce wide uncertainty; groups below the minimum size or without both classes are omitted.",
+    "The test set was used only after Phase 5 lock for descriptive post-hoc analysis; no fitting or tuning was performed."
+  ]
+}

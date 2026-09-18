@@ -1,0 +1,430 @@
+{
+  "phase": 7,
+  "files": [
+    {
+      "path": ".gitattributes",
+      "bytes": 46,
+      "sha256": null
+    },
+    {
+      "path": ".github\\workflows\\ci.yml",
+      "bytes": 521,
+      "sha256": null
+    },
+    {
+      "path": ".github\\workflows\\upload_model.yml",
+      "bytes": 779,
+      "sha256": null
+    },
+    {
+      "path": ".gitignore",
+      "bytes": 4992,
+      "sha256": null
+    },
+    {
+      "path": ".vscode\\settings.json",
+      "bytes": 74,
+      "sha256": "19585149fb4f771cca5f3c79a8b943f9d3899cf606248bfcf6533af6b21c3cc8"
+    },
+    {
+      "path": ".vscode\\tasks.json",
+      "bytes": 348,
+      "sha256": "273516954cf3ac4f53da50528f4fd9d209939b5858bd3c6e6cbe97ac8bde662e"
+    },
+    {
+      "path": "eda\\correlation_matrix.png",
+      "bytes": 147988,
+      "sha256": null
+    },
+    {
+      "path": "eda\\numeric_features_distribution.png",
+      "bytes": 155394,
+      "sha256": null
+    },
+    {
+      "path": "eda\\numeric_vs_target.png",
+      "bytes": 96578,
+      "sha256": null
+    },
+    {
+      "path": "heart.csv",
+      "bytes": 38114,
+      "sha256": null
+    },
+    {
+      "path": "models\\baseline_cv_results.csv",
+      "bytes": 209,
+      "sha256": null
+    },
+    {
+      "path": "models\\baseline_validation_results.csv",
+      "bytes": 350,
+      "sha256": null
+    },
+    {
+      "path": "models\\decision_tree_baseline.pkl",
+      "bytes": 9833,
+      "sha256": "ac5d3fdb43eb810def052d478a0ec9ec30de7105d7fbc8ca0b7b882b9d715f1c"
+    },
+    {
+      "path": "models\\logistic_regression_baseline.pkl",
+      "bytes": 1071,
+      "sha256": "9987df01cf73ab87f6b8b8497f527728695f9bc93e0714b7852b7d73876b62b0"
+    },
+    {
+      "path": "models\\phase3\\best_configurations.json",
+      "bytes": 563,
+      "sha256": "cf1c94022c3a44a44245f87e3a1eed6664a8e059422531b34fe6cd36d5719a8f"
+    },
+    {
+      "path": "models\\phase3\\imbalance_comparison.csv",
+      "bytes": 1348,
+      "sha256": null
+    },
+    {
+      "path": "models\\phase3\\model_shortlist_leaderboard.csv",
+      "bytes": 1065,
+      "sha256": null
+    },
+    {
+      "path": "models\\phase3\\phase3_decision.json",
+      "bytes": 497,
+      "sha256": "662b935bc0d2d5c026799dbb735650584db82f081de65e7f93396d17efe8e44d"
+    },
+    {
+      "path": "models\\phase3\\selected_imbalance_strategy.csv",
+      "bytes": 537,
+      "sha256": null
+    },
+    {
+      "path": "models\\phase3\\stability_by_seed.csv",
+      "bytes": 2282,
+      "sha256": null
+    },
+    {
+      "path": "models\\phase3\\stability_summary.csv",
+      "bytes": 591,
+      "sha256": null
+    },
+    {
+      "path": "models\\phase3\\tuning_results.csv",
+      "bytes": 463,
+      "sha256": null
+    },
+    {
+      "path": "models\\phase4\\ablation_results.csv",
+      "bytes": 2527,
+      "sha256": null
+    },
+    {
+      "path": "models\\phase4\\ablation_stability_by_seed.csv",
+      "bytes": 5334,
+      "sha256": null
+    },
+    {
+      "path": "models\\phase4\\ablation_stability_summary.csv",
+      "bytes": 1446,
+      "sha256": null
+    },
+    {
+      "path": "models\\phase4\\ensemble_comparison.csv",
+      "bytes": 1155,
+      "sha256": null
+    },
+    {
+      "path": "models\\phase4\\ensemble_weights.json",
+      "bytes": 89,
+      "sha256": "628772d625883a84172b0d288ccd361f0ce61346aade3e336e147dd252fa4efc"
+    },
+    {
+      "path": "models\\phase4\\fig_ablation_comparison.png",
+      "bytes": 749290,
+      "sha256": null
+    },
+    {
+      "path": "models\\phase4\\fig_ensemble_diversity_correlation.png",
+      "bytes": 385399,
+      "sha256": null
+    },
+    {
+      "path": "models\\phase4\\fig_roc_pr_comparison.png",
+      "bytes": 359133,
+      "sha256": null
+    },
+    {
+      "path": "models\\phase4\\hybrid_ensemble_model.pkl",
+      "bytes": 3368003,
+      "sha256": "7a275b9362f55c4f7ac8d98fb3a2426c20ed8b77edf111e052799f0500475afa"
+    },
+    {
+      "path": "models\\phase4\\oof_probabilities.csv",
+      "bytes": 45390,
+      "sha256": null
+    },
+    {
+      "path": "models\\phase4\\phase4_decision.json",
+      "bytes": 719,
+      "sha256": "dcb3f8cc324bce780cd8901b50e20f0c7f4b7515f222f7d756d87e3892f71195"
+    },
+    {
+      "path": "models\\phase4\\prediction_correlations.csv",
+      "bytes": 376,
+      "sha256": null
+    },
+    {
+      "path": "models\\phase5\\calibration_assessment_uncalibrated.csv",
+      "bytes": 764,
+      "sha256": null
+    },
+    {
+      "path": "models\\phase5\\calibration_final_comparison.csv",
+      "bytes": 438,
+      "sha256": null
+    },
+    {
+      "path": "models\\phase5\\calibration_method_cv_comparison.csv",
+      "bytes": 2774,
+      "sha256": null
+    },
+    {
+      "path": "models\\phase5\\calibration_reliability_curves.csv",
+      "bytes": 2631,
+      "sha256": null
+    },
+    {
+      "path": "models\\phase5\\chosen_calibration.json",
+      "bytes": 569,
+      "sha256": "a9244d8f7387008af25769859e51a758698877aa5d6e221cc1035aa5c8ef5260"
+    },
+    {
+      "path": "models\\phase5\\confusion_matrix.csv",
+      "bytes": 48,
+      "sha256": null
+    },
+    {
+      "path": "models\\phase5\\fig_brier_comparison.png",
+      "bytes": 142175,
+      "sha256": null
+    },
+    {
+      "path": "models\\phase5\\fig_calibration_curves.png",
+      "bytes": 722166,
+      "sha256": null
+    },
+    {
+      "path": "models\\phase5\\fig_test_calibration_curve.png",
+      "bytes": 200357,
+      "sha256": null
+    },
+    {
+      "path": "models\\phase5\\fig_test_confusion_roc_pr.png",
+      "bytes": 280689,
+      "sha256": null
+    },
+    {
+      "path": "models\\phase5\\fig_threshold_tradeoff.png",
+      "bytes": 423276,
+      "sha256": null
+    },
+    {
+      "path": "models\\phase5\\final_test_metrics.csv",
+      "bytes": 445,
+      "sha256": null
+    },
+    {
+      "path": "models\\phase5\\hybrid_ensemble_calibrated_production.pkl",
+      "bytes": 3368659,
+      "sha256": "9b65cddd37ba0e321cf3783f22c433de25fc569f008ee5e5a1b512ea30d08a13"
+    },
+    {
+      "path": "models\\phase5\\lock_manifest.json",
+      "bytes": 1323,
+      "sha256": "701c4d55809297d032aba5016614b89f60ac599ca2f267d4f6dde012c636de3b"
+    },
+    {
+      "path": "models\\phase5\\phase5_decision.json",
+      "bytes": 2151,
+      "sha256": "82a2c459851529a507b921df5834c1b70e47da9018c774adb860fb4ebf229699"
+    },
+    {
+      "path": "models\\phase5\\test_calibration_curve.csv",
+      "bytes": 118,
+      "sha256": null
+    },
+    {
+      "path": "models\\phase5\\test_pr_curve.csv",
+      "bytes": 83,
+      "sha256": null
+    },
+    {
+      "path": "models\\phase5\\test_roc_curve.csv",
+      "bytes": 46,
+      "sha256": null
+    },
+    {
+      "path": "models\\phase5\\threshold_decision.json",
+      "bytes": 1383,
+      "sha256": "92e97e26200166f0dc725b20735bb736fa5c05d21ed58f25238d4356196f3ee0"
+    },
+    {
+      "path": "models\\phase5\\threshold_performance.csv",
+      "bytes": 11570,
+      "sha256": null
+    },
+    {
+      "path": "models\\phase6\\error_analysis_all_predictions.csv",
+      "bytes": 12314,
+      "sha256": null
+    },
+    {
+      "path": "models\\phase6\\error_analysis_high_confidence_mistakes.csv",
+      "bytes": 135,
+      "sha256": null
+    },
+    {
+      "path": "models\\phase6\\error_analysis_mistakes.csv",
+      "bytes": 135,
+      "sha256": null
+    },
+    {
+      "path": "models\\phase6\\error_analysis_summary.csv",
+      "bytes": 102,
+      "sha256": null
+    },
+    {
+      "path": "models\\phase6\\fig_shap_global_importance.png",
+      "bytes": 76069,
+      "sha256": null
+    },
+    {
+      "path": "models\\phase6\\phase6_decision.json",
+      "bytes": 1280,
+      "sha256": "303fbf61f23bcc5d4f3b4f14ded06af9d7ba9c9cef30aaa0edd3cb8e7053321e"
+    },
+    {
+      "path": "models\\phase6\\shap_global_importance.csv",
+      "bytes": 603,
+      "sha256": null
+    },
+    {
+      "path": "models\\phase6\\shap_local_explanations.csv",
+      "bytes": 1474,
+      "sha256": null
+    },
+    {
+      "path": "models\\phase6\\subgroup_metrics_with_bootstrap_ci.csv",
+      "bytes": 1239,
+      "sha256": null
+    },
+    {
+      "path": "models\\phase6\\threshold_sensitivity_robustness.csv",
+      "bytes": 449,
+      "sha256": null
+    },
+    {
+      "path": "models\\phase7\\inference_validation.json",
+      "bytes": 787,
+      "sha256": "66785efa470be5f8dc33de7385ed06550102bb5586196be3ede69cee4b0eff80"
+    },
+    {
+      "path": "models\\phase7\\inference_validation_predictions.csv",
+      "bytes": 2596,
+      "sha256": null
+    },
+    {
+      "path": "models\\preprocessor.pkl",
+      "bytes": 3900,
+      "sha256": "a4b41e86009de3bbd49c5519435196b971e4ad0b67d61311061c3c8fad6bf161"
+    },
+    {
+      "path": "models\\random_forest_baseline.pkl",
+      "bytes": 1117609,
+      "sha256": "02ee58bd7c76257b310fa4566ac5f044ccec89a2455471ccb3896192065569d7"
+    },
+    {
+      "path": "phase1_foundation.py",
+      "bytes": 6303,
+      "sha256": "679215b685d472610c0cfd776f5d7c7a3c594a6a66381992ff9aba5779b50889"
+    },
+    {
+      "path": "phase2_modeling_foundation.py",
+      "bytes": 8492,
+      "sha256": "9fb8552f5ba58f3e2078347c7d486ed9cd0fabf1ad6433153e56817e0e768b50"
+    },
+    {
+      "path": "phase3_advanced.py",
+      "bytes": 13001,
+      "sha256": "0789e22620b8787118e3b8ee2bcfb4ab3d91561bfb14aa322c3d8e304babddff"
+    },
+    {
+      "path": "phase4_ensemble_ablation.py",
+      "bytes": 34455,
+      "sha256": "2586cda299cdba2e5c631fe74806905a31df3eb41d0c040b15a2795c569dd8d4"
+    },
+    {
+      "path": "phase5_calibration_final_eval.py",
+      "bytes": 49392,
+      "sha256": "a456303d77e3f909c7549945e7db127093a046ef27dc8150d53f5e28862bfe75"
+    },
+    {
+      "path": "phase6_explainability_robustness.py",
+      "bytes": 10288,
+      "sha256": "dec627d1ba2343ff89b9a244e1fa272ea20c1d5cfa970d94f7d9376ba5e84ee1"
+    },
+    {
+      "path": "phase7_production_handoff.py",
+      "bytes": 7237,
+      "sha256": "c544b27caee91690f5f2281eb279f2b16128e2ed8b39a14e6f57ee933808ac84"
+    },
+    {
+      "path": "production_inference.py",
+      "bytes": 3388,
+      "sha256": "e2ca3c8f2b3188aa06a7ea1339856ba266b00ad47fb4580ead96d0bf0cad07b7"
+    },
+    {
+      "path": "pyproject.toml",
+      "bytes": 1102,
+      "sha256": null
+    },
+    {
+      "path": "README.md",
+      "bytes": 14314,
+      "sha256": "3d9d6bdaf67bb19d154ead9fb7927ae79cb500e421dbba848a6f14874caa3fc8"
+    },
+    {
+      "path": "requirements.txt",
+      "bytes": 260,
+      "sha256": null
+    },
+    {
+      "path": "splits\\test.csv",
+      "bytes": 7860,
+      "sha256": null
+    },
+    {
+      "path": "splits\\test_processed.csv",
+      "bytes": 41284,
+      "sha256": null
+    },
+    {
+      "path": "splits\\train.csv",
+      "bytes": 23433,
+      "sha256": null
+    },
+    {
+      "path": "splits\\train_processed.csv",
+      "bytes": 123566,
+      "sha256": null
+    },
+    {
+      "path": "splits\\val.csv",
+      "bytes": 7865,
+      "sha256": null
+    },
+    {
+      "path": "splits\\val_processed.csv",
+      "bytes": 41259,
+      "sha256": null
+    }
+  ]
+}

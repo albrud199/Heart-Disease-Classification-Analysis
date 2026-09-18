@@ -1,0 +1,30 @@
+{
+  "Logistic Regression": {
+    "strategy": "smote",
+    "params": {
+      "model__C": 1.0
+    }
+  },
+  "KNN": {
+    "strategy": "smote",
+    "params": {
+      "model__n_neighbors": 11,
+      "model__weights": "distance"
+    }
+  },
+  "SVM": {
+    "strategy": "class_weight",
+    "params": {
+      "model__C": 10.0,
+      "model__gamma": "scale"
+    }
+  },
+  "Random Forest": {
+    "strategy": "smote",
+    "params": {
+      "model__max_depth": null,
+      "model__max_features": "log2",
+      "model__min_samples_leaf": 1
+    }
+  }
+}

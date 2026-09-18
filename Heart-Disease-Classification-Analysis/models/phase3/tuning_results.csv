@@ -1,0 +1,5 @@
+model,strategy,best_cv_roc_auc,best_params,evaluated_candidates
+KNN,smote,0.9917719823334231,"{""model__n_neighbors"": 11, ""model__weights"": ""distance""}",8
+Random Forest,smote,0.989521175230921,"{""model__max_depth"": null, ""model__max_features"": ""log2"", ""model__min_samples_leaf"": 1}",18
+SVM,class_weight,0.9784040668998296,"{""model__C"": 10.0, ""model__gamma"": ""scale""}",6
+Logistic Regression,smote,0.9260136983230204,"{""model__C"": 1.0}",3

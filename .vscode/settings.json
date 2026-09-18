@@ -1,0 +1,16 @@
+{
+          "CodeGPT.apiKey": "CodeGPT Plus Beta",
+          "python.analysis.typeCheckingMode": "basic",
+          "python.analysis.diagnosticSeverityOverrides": {
+                    "reportMissingTypeStubs": "none",
+                    "reportUnknownVariableType": "none",
+                    "reportUnknownMemberType": "none",
+                    "reportUnknownArgumentType": "none",
+                    "reportUnknownParameterType": "none",
+                    "reportUnknownLambdaType": "none",
+                    "reportMissingParameterType": "none",
+                    "reportMissingTypeArgument": "none",
+                    "reportUnusedImport": "warning",
+                    "reportUndefinedVariable": "error"
+          }
+}

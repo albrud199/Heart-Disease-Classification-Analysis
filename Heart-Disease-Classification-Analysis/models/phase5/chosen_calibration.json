@@ -1,0 +1,15 @@
+{
+  "selection_metric": "cross-validated Brier score (5-fold stratified, within-set)",
+  "selection_data": "validation probabilities (calibrators refit on the full validation set)",
+  "chosen_method_per_candidate": {
+    "KNN": "isotonic",
+    "SVM": "isotonic",
+    "Random Forest": "isotonic",
+    "Hybrid Ensemble (Weighted)": "isotonic"
+  },
+  "final_procedure": {
+    "candidate": "Hybrid Ensemble (Weighted)",
+    "calibrator": "isotonic",
+    "fitted_on": "splits/val.csv (probabilities from the Phase 4 ensemble trained on splits/train.csv)"
+  }
+}

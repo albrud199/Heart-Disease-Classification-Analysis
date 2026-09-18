@@ -1,0 +1,66 @@
+{
+  "phase": 5,
+  "steps": [
+    19,
+    20,
+    21
+  ],
+  "experiment_ids": [
+    "E07",
+    "E08",
+    "E10"
+  ],
+  "primary_metric": "ROC-AUC",
+  "step19_calibration": {
+    "chosen_method_per_candidate": {
+      "KNN": "isotonic",
+      "SVM": "isotonic",
+      "Random Forest": "isotonic",
+      "Hybrid Ensemble (Weighted)": "isotonic"
+    },
+    "final_procedure": {
+      "candidate": "Hybrid Ensemble (Weighted)",
+      "calibrator": "isotonic",
+      "fitted_on": "splits/val.csv"
+    }
+  },
+  "step20_threshold": {
+    "locked_threshold": 0.51,
+    "selection_rule": "Maximize Youden's J; ties resolved toward higher sensitivity",
+    "validation_operating_point": {
+      "recall_sensitivity": 0.9714285714285714,
+      "specificity": 1.0,
+      "f1": 0.9855072463768116
+    }
+  },
+  "step21_final_test": {
+    "roc_auc": 1.0,
+    "roc_auc_ci95_low": 1.0,
+    "roc_auc_ci95_high": 1.0,
+    "pr_auc": 1.0,
+    "pr_auc_ci95_low": 1.0,
+    "pr_auc_ci95_high": 1.0,
+    "accuracy": 1.0,
+    "recall_sensitivity": 1.0,
+    "specificity": 1.0,
+    "precision": 1.0,
+    "f1": 1.0,
+    "balanced_accuracy": 1.0,
+    "brier_calibrated": 0.004878048781468291,
+    "ece_calibrated": 0.009757078048780388,
+    "log_loss_calibrated": 0.013525803523611154,
+    "brier_uncalibrated_reference": 0.00669629556746365,
+    "ece_uncalibrated_reference": 0.025585270539776314
+  },
+  "production_artifact": {
+    "path": "E:\\study\\Heart-Disease\\Heart-Disease-Classification-Analysis\\models\\phase5\\hybrid_ensemble_calibrated_production.pkl",
+    "contents": "Phase 4 hybrid ensemble + calibration + locked threshold"
+  },
+  "integrity": {
+    "oof_reproduction_matches_phase4": true,
+    "calibration_fitted_without_test_data": true,
+    "threshold_selected_without_test_data": true,
+    "test_split_accessed_exactly_once": true
+  },
+  "decision": "LOCKED. Final pipeline (ensemble + calibration + threshold) evaluated exactly once on the untouched test set. Results are final; no model, feature, calibration, or threshold changes are permitted without reopening the evaluation protocol."
+}

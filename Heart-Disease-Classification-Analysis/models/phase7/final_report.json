@@ -1,0 +1,82 @@
+{
+  "title": "Heart Disease Classification \u2014 Phase 7 Production Handoff",
+  "generated_utc": "2026-09-18T14:21:26.401428+00:00",
+  "status": "complete",
+  "steps": {
+    "24_production_artifact": "passed",
+    "25_inference_validation": "passed",
+    "26_repository_cleanup": "passed",
+    "27_final_report": "passed"
+  },
+  "production_contract": {
+    "artifact": "models\\phase5\\hybrid_ensemble_calibrated_production.pkl",
+    "calibration": {
+      "method": "isotonic",
+      "thresholds": [
+        0.0,
+        0.08169729984794372,
+        0.10439177357221173,
+        0.4232579976972767,
+        0.5239494404806925,
+        1.0
+      ],
+      "values": [
+        0.0,
+        0.0,
+        0.5,
+        0.5,
+        1.0,
+        1.0
+      ]
+    },
+    "threshold": 0.51,
+    "schema": [
+      "age",
+      "sex",
+      "cp",
+      "trestbps",
+      "chol",
+      "fbs",
+      "restecg",
+      "thalach",
+      "exang",
+      "oldpeak",
+      "slope",
+      "ca",
+      "thal"
+    ]
+  },
+  "locked_test_metrics_from_phase5": {
+    "roc_auc": 1.0,
+    "roc_auc_ci95_low": 1.0,
+    "roc_auc_ci95_high": 1.0,
+    "pr_auc": 1.0,
+    "pr_auc_ci95_low": 1.0,
+    "pr_auc_ci95_high": 1.0,
+    "accuracy": 1.0,
+    "recall_sensitivity": 1.0,
+    "specificity": 1.0,
+    "precision": 1.0,
+    "f1": 1.0,
+    "balanced_accuracy": 1.0,
+    "brier_calibrated": 0.0048780487814682,
+    "ece_calibrated": 0.0097570780487803,
+    "log_loss_calibrated": 0.0135258035236111,
+    "brier_uncalibrated_reference": 0.0066962955674636,
+    "ece_uncalibrated_reference": 0.0255852705397763
+  },
+  "phase6_summary": {
+    "explanation_method": "deterministic_model_agnostic_shapley_permutation_fallback",
+    "subgroups_evaluated": 11
+  },
+  "reproducibility": {
+    "python": "3.14.4 (tags/v3.14.4:23116f9, Apr  7 2026, 14:10:54) [MSC v.1944 64 bit (AMD64)]",
+    "platform": "Windows-10-10.0.19045-SP0",
+    "artifact_sha256": "9b65cddd37ba0e321cf3783f22c433de25fc569f008ee5e5a1b512ea30d08a13"
+  },
+  "limitations": [
+    "Small single-cohort dataset; no external or temporal validation.",
+    "Test performance is an evaluation result, not a clinical performance guarantee.",
+    "Research and educational use only; not a diagnostic device."
+  ]
+}

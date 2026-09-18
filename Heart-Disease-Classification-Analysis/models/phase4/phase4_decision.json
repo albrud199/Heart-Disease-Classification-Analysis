@@ -1,0 +1,24 @@
+{
+  "phase": 4,
+  "steps": [
+    17,
+    18
+  ],
+  "experiment_ids": [
+    "E05",
+    "E06"
+  ],
+  "primary_metric": "ROC-AUC",
+  "weights": {
+    "KNN": 0.8477578982598694,
+    "SVM": 0.0,
+    "Random Forest": 0.15224210174013067
+  },
+  "best_ensemble_configuration": "Hybrid Ensemble (Weighted)",
+  "oof_roc_auc_weighted": 0.9927236357478515,
+  "oof_roc_auc_unweighted": 0.9903475720756953,
+  "oof_roc_auc_best_single (RF)": 0.990120020320901,
+  "stability_score_weighted": 0.9903182921499386,
+  "test_split_integrity": "Untouched / Locked (zero access)",
+  "decision": "Proceed to Phase 5 (Steps 19-21: Calibration, Threshold Analysis, Locked Test Eval) using the validated Hybrid Ensemble."
+}

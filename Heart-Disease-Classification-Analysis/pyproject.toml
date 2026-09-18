@@ -1,0 +1,25 @@
+[tool.pyright]
+typeCheckingMode = "basic"
+# NOTE: Pylance only reads this file when it sits at the VS Code workspace root.
+# This folder is nested one level below the workspace root (e:\study\Heart-Disease),
+# so the settings that actually take effect live in ../.vscode/settings.json.
+# Kept here so the rules are also honored when this folder is opened directly.
+# scikit-learn, pandas, and imbalanced-learn ship partially-typed stubs, so the
+# "unknown" family of diagnostics is turned off. They would otherwise report
+# hundreds of findings about third-party library internals, not project bugs.
+reportMissingTypeStubs = false
+reportUnknownVariableType = false
+reportUnknownMemberType = false
+reportUnknownArgumentType = false
+reportUnknownParameterType = false
+reportUnknownLambdaType = false
+reportMissingParameterType = false
+reportMissingTypeArgument = false
+# Keep the diagnostics that flag real problems in this codebase.
+reportUnusedImport = true
+reportUndefinedVariable = true
+reportSelfClsParameterName = true
+reportUnnecessaryCast = false
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

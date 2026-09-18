@@ -1,0 +1,35 @@
+{
+  "locked_pipeline": {
+    "model": "Hybrid Ensemble (Weighted) \u2014 Phase 4 (fitted on splits/train.csv)",
+    "model_source": "E:\\study\\Heart-Disease\\Heart-Disease-Classification-Analysis\\models\\phase4\\hybrid_ensemble_model.pkl",
+    "calibration": {
+      "method": "isotonic",
+      "thresholds": [
+        0.0,
+        0.08169729984794372,
+        0.10439177357221173,
+        0.4232579976972767,
+        0.5239494404806925,
+        1.0
+      ],
+      "values": [
+        0.0,
+        0.0,
+        0.5,
+        0.5,
+        1.0,
+        1.0
+      ]
+    },
+    "calibrator_fitted_on": "splits/val.csv",
+    "decision_threshold": 0.51,
+    "threshold_rule": "Youden's J on calibrated validation probabilities"
+  },
+  "input_hashes": {
+    "phase4_ensemble_model.pkl": "7a275b9362f55c4f7ac8d98fb3a2426c20ed8b77edf111e052799f0500475afa",
+    "ensemble_weights.json": "628772d625883a84172b0d288ccd361f0ce61346aade3e336e147dd252fa4efc",
+    "best_configurations.json": "cf1c94022c3a44a44245f87e3a1eed6664a8e059422531b34fe6cd36d5719a8f"
+  },
+  "artifact_hash_sha256": "9b65cddd37ba0e321cf3783f22c433de25fc569f008ee5e5a1b512ea30d08a13",
+  "artifact_path": "E:\\study\\Heart-Disease\\Heart-Disease-Classification-Analysis\\models\\phase5\\hybrid_ensemble_calibrated_production.pkl"
+}
