@@ -63,7 +63,7 @@ if numeric_cols:
     plt.figure(figsize=(15, 10))
     for i, col in enumerate(numeric_cols, 1):
         plt.subplot(4, 4, i)
-        sns.histplot(X[col], kde=True)
+        sns.histplot(data=X, x=col, kde=True)
         plt.title(f'Distribution of {col}')
     plt.tight_layout()
     plt.savefig('eda/numeric_features_distribution.png')
@@ -170,5 +170,5 @@ print("- test.csv")
 
 print("\nEDA plots saved to 'eda/' directory.")
 
-print("\nPhase 1 (Steps 1-7) completed successfully!")
+print("\nPhase 1 (Steps 1-7) completed successfully!!")
 
